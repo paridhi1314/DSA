@@ -1,0 +1,21 @@
+class Solution {
+
+    public:
+    int maxi;
+    int diameterOfBinaryTree(TreeNode* root) {
+        maxi=INT_MIN;
+        longestpath(root);
+        return maxi;
+    }
+    int longestpath(TreeNode* root){
+        if(root==NULL){
+            return 0;
+        }
+        int left=longestpath(root->left);
+        int right=longestpath(root->right);
+        maxi=max(maxi,left+right);
+        
+        
+        return 1+max(left,right);
+    }
+};
